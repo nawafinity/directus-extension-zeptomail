@@ -2,6 +2,22 @@ export const settingsCollectionDefinition = {
     "collection": "zeptomail_settings",
     "fields": [
         {
+            "type": "alias",
+            "meta": {
+                "interface": "presentation-notice",
+                "special": [
+                    "alias",
+                    "no-data"
+                ],
+                "options": {
+                    "text": "Please <a href=\"\">AAA</a>",
+                    "icon": "info",
+                    "color": "info"
+                }
+            },
+            "field": "notice-mrkuiu"
+        },
+        {
             "field": "id",
             "type": "uuid",
             "meta": {
