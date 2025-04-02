@@ -10,7 +10,7 @@ export const settingsCollectionDefinition = {
                     "no-data"
                 ],
                 "options": {
-                    "text": "Please <a href=\"\">AAA</a>",
+                    "text": "Please take a look at the <a href=\"\"><b>ZeptoMail Documentation</b></a> for more information on how the API works and available options.",
                     "icon": "info",
                     "color": "info"
                 }
@@ -37,6 +37,7 @@ export const settingsCollectionDefinition = {
         {
             "type": "string",
             "meta": {
+                "note": "Your ZeptoMail API token.",
                 "interface": "input",
                 "special": null,
                 "options": {
@@ -55,12 +56,42 @@ export const settingsCollectionDefinition = {
                 "special": null,
                 "options": {
                     "iconLeft": "alternate_email",
-                    "placeholder": "From Email"
+                    "placeholder": "From Address"
                 },
                 required: true,
                 width: 'half'
             },
-            "field": "from_email"
+            "field": "from_address"
+        },
+        {
+            "type": "boolean",
+            "meta": {
+                "interface": "boolean",
+                "special": [
+                    "cast-boolean"
+                ]
+            },
+            "field": "track_clicks"
+        },
+        {
+            "type": "boolean",
+            "meta": {
+                "interface": "boolean",
+                "special": [
+                    "cast-boolean"
+                ]
+            },
+            "field": "track_opens"
+        },
+        {
+            "type": "boolean",
+            "meta": {
+                "interface": "boolean",
+                "special": [
+                    "cast-boolean"
+                ]
+            },
+            "field": "click_reference"
         }
     ],
     "schema": {},
