@@ -32,6 +32,7 @@ export class ZeptoMailService {
     }
 
     public async send(payload: any) {
+        this.logger.info("Sending via zeptomail service...");
         const settings = await this.getZeptoMailSettings();
         const defaultTemplateData = await this.getDefaultTemplateData()
 
