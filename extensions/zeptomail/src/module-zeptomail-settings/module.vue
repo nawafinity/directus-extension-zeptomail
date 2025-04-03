@@ -6,6 +6,7 @@
           icon
           :disabled="!canSave"
           :tooltip="t('zme_save')"
+          :loading="saveLoading"
           @click="submit"
       >
         <v-icon name="check" outline/>
@@ -24,6 +25,23 @@
       </v-button>
     </template>
 
+    <template #navigation>
+      <v-list nav>
+        <v-list-item :href="DOCUMENTATION">
+          <v-list-item-icon><v-icon name="article" /></v-list-item-icon>
+          <v-list-item-content>
+            <v-text-overflow :text="t('zme_documentation')" />
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item :href="SPONSORING">
+          <v-list-item-icon><v-icon name="heart_plus" color="#b93a86" /></v-list-item-icon>
+          <v-list-item-content>
+            <v-text-overflow :text="t('zme_sponsor')" />
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </template>
+
     <template v-if="loading">
       <v-info :title="t('zme_please_wait')" center icon="sync">
         {{ t('zme_please_wait_description') }}
@@ -35,6 +53,7 @@
         <v-form :fields="fields" v-model="formData" :initial-values="item" :key="formKey"/>
       </div>
     </template>
+
   </private-view>
 </template>
 
@@ -44,7 +63,7 @@ import {ref, watch} from "vue";
 import {settingsCollectionDefinition} from "./collections/settingsCollectionDefinition";
 import {useI18n} from "vue-i18n";
 import {resolveLocale} from "../shared/utils/i18n";
-import {COLLECTION_NAME} from "../shared/constants";
+import {COLLECTION_NAME, DOCUMENTATION, SPONSORING} from "../shared/constants";
 import {TRANSLATIONS} from "./translations";
 
 
@@ -69,10 +88,11 @@ const canTest = ref(false);
 const item = ref(null);
 const formKey = ref(0)
 const testLoading = ref(false);
+const saveLoading = ref(false);
 const userId = ref(null);
 const userEmail = ref(null);
 
-watch(formData, (val) => {
+watch(formData, () => {
   canSave.value = true;
 }, {deep: true});
 
@@ -81,49 +101,43 @@ watch(formData, (val) => {
 const isCollectionExist = (collection: string) => collectionsStore.getCollection(collection)
 
 async function createSettings() {
-  if (!isCollectionExist(COLLECTION_NAME)) {
-    api.post('/collections', settingsCollectionDefinition).then(({data: {data}}) => {
-      if (!data) {
-      }
-    })
-  }
+  return isCollectionExist(COLLECTION_NAME)
+      ? Promise.resolve(null)
+      : api.post('/collections', settingsCollectionDefinition);
 }
 
 async function fetchSettings() {
-  if (isCollectionExist(COLLECTION_NAME)) {
-    api.get(`/items/${COLLECTION_NAME}`).then(({data: {data}}) => {
-      item.value = data
-      if (Object.keys(data).length > 0) {
-        canTest.value = true;
-      }
-    })
-  }
+  return isCollectionExist(COLLECTION_NAME)
+      ? api.get(`/items/${COLLECTION_NAME}`)
+      : Promise.resolve(null);
 }
 
 async function fetchUserInfo() {
-  try {
-    const {data: {data: {id, email}}} = await api.get('/users/me?fields=id,email')
-    userId.value = id
-    userEmail.value = email
-  } catch {
-
-  }
+  return await api.get('/users/me?fields=id,email')
 }
 
 
 async function submit() {
-  api.patch(`/items/${COLLECTION_NAME}`, formData.value).then(({data: {data}}) => {
+  saveLoading.value = true;
+  testLoading.value = true;
+
+  api.patch(`/items/${COLLECTION_NAME}`, formData.value).then(() => {
     canSave.value = false;
     add({
       title: t('zem_settings_saved')
     })
   }).catch(error => {
-    if (error.hasOwnProperty("response")) {
-      const {data: {errors}} = error.response;
-      if (errors) {
-        console.log(errors);
-      }
-    }
+    add({
+      title: t('zme_unexpected_title'),
+      type: 'error',
+      code: 500,
+      dialog: true,
+      text: t('zme_unexpected_text'),
+      error: error,
+    })
+  }).finally(() => {
+    saveLoading.value = false;
+    testLoading.value = false;
   })
 }
 
@@ -157,15 +171,39 @@ async function test() {
 
 
 (async () => {
-  await fetchUserInfo();
-  await createSettings();
-  await fetchSettings();
+  try {
+    await createSettings();
+    const userInfo = await fetchUserInfo();
+    const settings = await fetchSettings();
 
-  if (!fields.value.length) {
-    setTimeout(() => window.location.reload(), 100);
-    return;
+    if (settings && settings.data) {
+      const {data} = settings.data
+      item.value = data
+      canTest.value = true
+    }
+
+    if (userInfo && userInfo.data) {
+      const {data} = userInfo.data
+      userId.value = data.id
+      userEmail.value = data.email
+    }
+
+    if (!fields.value.length) {
+      setTimeout(() => window.location.reload(), 100);
+      return;
+    }
+    loading.value = false
+  } catch (error) {
+    add({
+      title: t('zme_unexpected_title'),
+      type: 'error',
+      code: 500,
+      dialog: true,
+      text: t('zme_unexpected_text'),
+      error: error,
+    })
   }
-  loading.value = false
+
 })()
 
 </script>

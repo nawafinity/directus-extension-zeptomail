@@ -3,3 +3,6 @@
 database
 extensions/.registry
 uploads
+dist
+extensions/zeptomail/package.json
+node_modules

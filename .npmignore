@@ -1,0 +1,29 @@
+# Root
+.dockerignore
+.docker-compose.yml
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+README.md
+database/
+templates/
+uploads/
+assets/
+
+# Build system
+src/
+scripts/
+tsconfig.json
+package-lock.json
+shims.d.ts
+
+# Internal dev files
+*.log
+*.bak
+*.db
+
+# Git
+.git
+.gitignore
+
+# Extensions repo structure
+extensions/

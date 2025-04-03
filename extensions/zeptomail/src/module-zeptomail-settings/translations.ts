@@ -10,7 +10,11 @@ export const TRANSLATIONS = {
         zme_test_sent_text: 'A test email has been sent to: {email}.',
         zme_test_send_error_title: 'Failed to Send Test Email',
         zme_test_send_error_text: 'Please verify your configuration or check the logs for more details.',
-        zem_settings_saved: 'Your settings have been saved successfully.'
+        zem_settings_saved: 'Your settings have been saved successfully.',
+        zme_unexpected_title: 'Something went wrong',
+        zme_unexpected_text: 'An unexpected error occurred. Please try again or check the console for details.',
+        zme_documentation: 'Documentation',
+        zme_sponsor: 'Become a Sponsor',
     },
     ar: {
         zme_please_wait: 'يرجى الانتظار...',
@@ -23,6 +27,10 @@ export const TRANSLATIONS = {
         zme_test_sent_text: 'تم إرسال البريد التجريبي إلى: {email}.',
         zme_test_send_error_title: 'فشل في إرسال البريد التجريبي',
         zme_test_send_error_text: 'يرجى التحقق من الإعدادات أو مراجعة السجلات لمزيد من التفاصيل.',
-        zem_settings_saved: 'تم حفظ الإعدادات بنجاح.'
+        zem_settings_saved: 'تم حفظ الإعدادات بنجاح.',
+        zme_unexpected_title: 'حدث خطأ غير متوقع',
+        zme_unexpected_text: 'حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى أو مراجعة وحدة التحكم لمزيد من التفاصيل.',
+        zme_documentation: 'التوثيق',
+        zme_sponsor: 'كن راعياً'
     }
 }

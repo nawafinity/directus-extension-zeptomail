@@ -138,10 +138,10 @@ This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE)
 
 ## ❤️ Sponsoring
 
-If you want to support our projects and help us group it, you can [become a sponsor on Github](https://github.com/sponsors/nawafinity) or just donate on [Buy Me Coffee](https://github.com/sponsors/nawafinity).
+If you want to support our projects and help us group it, you can [become a sponsor on GitHub](https://github.com/sponsors/nawafinity) or just donate on [Buy Me Coffee](https://buymeacoffee.com/nawafinity).
 
 ---
 
-<img height="56.5" src="https://api.saudimade.sa/uploads/logo_english_8beed26c44.svg" title="Made with ❤️ in Saudi Arabia" width="169" alt="Saudi made"/>
+<img height="56.5" src="https://raw.githubusercontent.com/nawafinity/directus-zeptomail/main/assets/saudi-made.png" title="Made with ❤️ in Saudi Arabia" width="169" alt="Saudi made"/>
 
 Made with 💚 in [Saudi Arabia](https://en.wikipedia.org/wiki/Saudi_Arabia)
