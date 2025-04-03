@@ -1,6 +1,10 @@
-# Directus ZeptoMail Extension
+<p align="center"><img alt="Directus Logo" src="https://raw.githubusercontent.com/nawafinity/directus-zeptomail/main/assets/cover.png"></p>
 
-A custom [Directus](https://directus.io) extension that integrates **ZeptoMail's HTTP API** (not SMTP) to send
+---
+
+# 🐰 Introduction
+
+A custom [Directus](https://directus.io) extension that integrates **ZeptoMail's HTTP API** to send
 transactional emails.
 
 <div align="center">
@@ -9,13 +13,10 @@ transactional emails.
 
 </div>
 
-
---- 
-
 ## 📚 **Table Of Contents**
 
 <!-- TOC -->
-* [Directus ZeptoMail Extension](#directus-zeptomail-extension)
+* [🐰 Introduction](#-introduction)
   * [📚 **Table Of Contents**](#-table-of-contents)
   * [**Why This Extension?**](#why-this-extension)
   * [**✨ Features**](#-features)
@@ -30,9 +31,8 @@ transactional emails.
   * [🛠️ Contributing](#-contributing)
   * [🐞 Issues](#-issues)
   * [📄 License](#-license)
+  * [❤️ Sponsoring](#-sponsoring)
 <!-- TOC -->
-
----
 
 ## **Why This Extension?**
 
@@ -44,16 +44,12 @@ To overcome this, I developed this extension to use **ZeptoMail's HTTP API**—a
 SMTP—for sending transactional emails. This solution allows Directus to send emails without relying on SMTP, making it
 ideal for environments where SMTP is blocked or restricted.
 
----
-
 ## **✨ Features**
 
 - Sends transactional emails using ZeptoMail's HTTP API.
 - Fully configurable via Module.
 - Can be triggered on any Directus lifecycle hook (e.g. user creation, login, password reset).
 - No SMTP dependency.
-
----
 
 ## 📦 **Installation**
 
@@ -90,8 +86,6 @@ yarn add directus-zeptomail
 > 📘 Also take a look at the [Directus Guide](https://directus.io/docs/self-hosting/including-extensions) for more
 > information on how to include and manage custom extensions in your Directus instance.
 
----
-
 ## ⚙️ **Setup**
 
 After installing the extension, you'll need to configure by doing the following.
@@ -102,18 +96,16 @@ After installing the extension, you'll need to configure by doing the following.
 4. From the main navigation menu, click on **ZeptoMail Settings**.
 5. Fill out the configuration form as described below:
 
-| Field               | Description                                                                                                                                               |
-|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **API Token**       | Your ZeptoMail API token (available in your ZeptoMail console).                                                                                           |
-| **From Address**    | A verified sender email address (must be verified in your ZeptoMail account).                                                                             |
-| **Name**            | *(Optional)* The sender name that will appear in the recipient's inbox.                                                                                   |
-| **Track Clicks**    | *(Optional)* Enable or disable [click tracking](https://www.zoho.com/zeptomail/help/api/email-sending.html).                                              |
-| **Track Opens**     | *(Optional)* Enable or disable [open tracking](https://www.zoho.com/zeptomail/help/api/email-sending.html).                                               |
-| **Click Reference** | *(Optional)* A custom identifier for tracking individual transactions. See [click_reference](https://www.zoho.com/zeptomail/help/api/email-sending.html). |
+| Field                | Description                                                                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **API Token**        | Your ZeptoMail API token (available in your ZeptoMail console).                                                                                            |
+| **From Address**     | A verified sender email address (must be verified in your ZeptoMail account).                                                                              |
+| **Name**             | *(Optional)* The sender name that will appear in the recipient's inbox.                                                                                    |
+| **Track Clicks**     | *(Optional)* Enable or disable [click tracking](https://www.zoho.com/zeptomail/help/api/email-sending.html).                                               |
+| **Track Opens**      | *(Optional)* Enable or disable [open tracking](https://www.zoho.com/zeptomail/help/api/email-sending.html).                                                |
+| **Client Reference** | *(Optional)* A custom identifier for tracking individual transactions. See [client_reference](https://www.zoho.com/zeptomail/help/api/email-sending.html). |
 
 > ⚠️ Make sure your **From Address** is verified in ZeptoMail to avoid delivery issues.
-
----
 
 ## ⚠️ **Limitations**
 
@@ -122,8 +114,6 @@ After installing the extension, you'll need to configure by doing the following.
 - **Batch sending** is not supported for the same reason; however, the `to` field already accepts an array of recipients
   by default.
 - **ZeptoMail Template API** is not supported, as Directus handles email templates natively within its system.
-
----
 
 ## 🛠️ Contributing
 
@@ -141,8 +131,17 @@ pull request. For major changes, please open an issue first to discuss what you�
 Found a bug or have a feature request? Please [open an issue](https://github.com/nawafinity/directus-zeptomail/issues)
 on GitHub with a clear description and steps to reproduce (if applicable). Your feedback helps improve the extension!
 
---- 
-
 ## 📄 License
 
 This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+
+
+## ❤️ Sponsoring
+
+If you want to support our projects and help us group it, you can [become a sponsor on Github](https://github.com/sponsors/nawafinity) or just donate on [Buy Me Coffee](https://github.com/sponsors/nawafinity).
+
+---
+
+<img height="56.5" src="https://api.saudimade.sa/uploads/logo_english_8beed26c44.svg" title="Made with ❤️ in Saudi Arabia" width="169" alt="Saudi made"/>
+
+Made with 💚 in [Saudi Arabia](https://en.wikipedia.org/wiki/Saudi_Arabia)
