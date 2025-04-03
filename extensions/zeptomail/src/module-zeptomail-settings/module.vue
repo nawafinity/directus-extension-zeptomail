@@ -44,6 +44,8 @@ import {ref, watch} from "vue";
 import {settingsCollectionDefinition} from "./collections/settingsCollectionDefinition";
 import {useI18n} from "vue-i18n";
 import {resolveLocale} from "../shared/utils/i18n";
+import {COLLECTION_NAME} from "../shared/constants";
+import {TRANSLATIONS} from "./translations";
 
 
 // Hooks
@@ -51,19 +53,12 @@ const api = useApi();
 const {useCollectionsStore, useSettingsStore, useNotificationsStore} = useStores();
 const collectionsStore = useCollectionsStore();
 const {settings} = useSettingsStore();
-const {fields} = useCollection('zeptomail_settings');
+const {fields} = useCollection(COLLECTION_NAME);
 const {add} = useNotificationsStore()
 // I18n
 const {t} = useI18n({
   locale: resolveLocale(settings.default_language),
-  messages: {
-    en: {
-      zme_please_wait: 'Please wait...',
-      zme_please_wait_description: 'Please be patient, we’re checking and loading your settings',
-      zme_test: "Send a test email",
-      zme_save: "Save Settings"
-    }
-  }
+  messages: TRANSLATIONS
 });
 
 // Refs
@@ -75,6 +70,7 @@ const item = ref(null);
 const formKey = ref(0)
 const testLoading = ref(false);
 const userId = ref(null);
+const userEmail = ref(null);
 
 watch(formData, (val) => {
   canSave.value = true;
@@ -85,7 +81,7 @@ watch(formData, (val) => {
 const isCollectionExist = (collection: string) => collectionsStore.getCollection(collection)
 
 async function createSettings() {
-  if (!isCollectionExist('zeptomail_settings')) {
+  if (!isCollectionExist(COLLECTION_NAME)) {
     api.post('/collections', settingsCollectionDefinition).then(({data: {data}}) => {
       if (!data) {
       }
@@ -94,8 +90,8 @@ async function createSettings() {
 }
 
 async function fetchSettings() {
-  if (isCollectionExist('zeptomail_settings')) {
-    api.get('/items/zeptomail_settings').then(({data: {data}}) => {
+  if (isCollectionExist(COLLECTION_NAME)) {
+    api.get(`/items/${COLLECTION_NAME}`).then(({data: {data}}) => {
       item.value = data
       if (Object.keys(data).length > 0) {
         canTest.value = true;
@@ -104,11 +100,11 @@ async function fetchSettings() {
   }
 }
 
-async function fetchUserId() {
+async function fetchUserInfo() {
   try {
-    const {data: {data: {id}}} = await api.get('http://localhost:8055/users/me?fields=id')
-    console.log(id)
+    const {data: {data: {id, email}}} = await api.get('/users/me?fields=id,email')
     userId.value = id
+    userEmail.value = email
   } catch {
 
   }
@@ -116,7 +112,7 @@ async function fetchUserId() {
 
 
 async function submit() {
-  api.patch('/items/zeptomail_settings', formData.value).then(({data: {data}}) => {
+  api.patch(`/items/${COLLECTION_NAME}`, formData.value).then(({data: {data}}) => {
     canSave.value = false;
     add({
       title: t('zem_settings_saved')
@@ -135,14 +131,24 @@ async function submit() {
 async function test() {
   testLoading.value = true;
   try {
-    const feedback = await api.post('/notifications', {
+    await api.post('/notifications', {
       recipient: userId.value,
       sender: userId.value,
-      subject: 'Test Email',
-      message: 'Test Email',
+      subject: t('zme_test_email_title'),
+      message: t('zme_test_email_text'),
+    })
+
+    add({
+      title: t('zme_test_sent_title'),
+      text: t('zme_test_sent_text', {email: userEmail.value}),
+      type: 'success'
     })
   } catch {
-
+    add({
+      title: t('zme_test_send_error_title'),
+      text: t('zme_test_send_error_text'),
+      type: 'warning'
+    })
   } finally {
     testLoading.value = false;
   }
@@ -151,14 +157,14 @@ async function test() {
 
 
 (async () => {
-  await fetchUserId();
+  await fetchUserInfo();
   await createSettings();
   await fetchSettings();
+
   if (!fields.value.length) {
-    window.location.reload()
+    setTimeout(() => window.location.reload(), 100);
     return;
   }
-
   loading.value = false
 })()
 

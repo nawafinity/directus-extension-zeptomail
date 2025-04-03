@@ -1,5 +1,7 @@
+import {COLLECTION_NAME} from "../../shared/constants";
+
 export const settingsCollectionDefinition = {
-    "collection": "zeptomail_settings",
+    "collection": COLLECTION_NAME,
     "fields": [
         {
             "type": "alias",
@@ -10,7 +12,7 @@ export const settingsCollectionDefinition = {
                     "no-data"
                 ],
                 "options": {
-                    "text": "Please take a look at the <a href=\"\"><b>ZeptoMail Documentation</b></a> for more information on how the API works and available options.",
+                    "text": "Please take a look at the <a href=\"https://www.zoho.com/zeptomail/help/api/email-sending.html\" target='_blank'><b>ZeptoMail Documentation</b></a> for more information on how the API works and available options.",
                     "icon": "info",
                     "color": "info"
                 }
@@ -91,7 +93,7 @@ export const settingsCollectionDefinition = {
                     "cast-boolean"
                 ]
             },
-            "field": "click_reference"
+            "field": "client_reference"
         }
     ],
     "schema": {},

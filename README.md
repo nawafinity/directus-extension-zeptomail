@@ -3,11 +3,20 @@
 A custom [Directus](https://directus.io) extension that integrates **ZeptoMail's HTTP API** (not SMTP) to send
 transactional emails.
 
-## **Table Of Contents**
+<div align="center">
+
+[العربية](README.AR_SA.md)
+
+</div>
+
+
+--- 
+
+## 📚 **Table Of Contents**
 
 <!-- TOC -->
 * [Directus ZeptoMail Extension](#directus-zeptomail-extension)
-  * [**Table Of Contents**](#table-of-contents)
+  * [📚 **Table Of Contents**](#-table-of-contents)
   * [**Why This Extension?**](#why-this-extension)
   * [**✨ Features**](#-features)
   * [📦 **Installation**](#-installation)
@@ -17,7 +26,13 @@ transactional emails.
       * [Using PNPM](#using-pnpm)
       * [Using YARN](#using-yarn)
   * [⚙️ **Setup**](#-setup)
+  * [⚠️ **Limitations**](#-limitations)
+  * [🛠️ Contributing](#-contributing)
+  * [🐞 Issues](#-issues)
+  * [📄 License](#-license)
 <!-- TOC -->
+
+---
 
 ## **Why This Extension?**
 
@@ -29,12 +44,16 @@ To overcome this, I developed this extension to use **ZeptoMail's HTTP API**—a
 SMTP—for sending transactional emails. This solution allows Directus to send emails without relying on SMTP, making it
 ideal for environments where SMTP is blocked or restricted.
 
+---
+
 ## **✨ Features**
 
 - Sends transactional emails using ZeptoMail's HTTP API.
 - Fully configurable via Module.
 - Can be triggered on any Directus lifecycle hook (e.g. user creation, login, password reset).
 - No SMTP dependency.
+
+---
 
 ## 📦 **Installation**
 
@@ -71,6 +90,8 @@ yarn add directus-zeptomail
 > 📘 Also take a look at the [Directus Guide](https://directus.io/docs/self-hosting/including-extensions) for more
 > information on how to include and manage custom extensions in your Directus instance.
 
+---
+
 ## ⚙️ **Setup**
 
 After installing the extension, you'll need to configure by doing the following.
@@ -92,4 +113,36 @@ After installing the extension, you'll need to configure by doing the following.
 
 > ⚠️ Make sure your **From Address** is verified in ZeptoMail to avoid delivery issues.
 
+---
 
+## ⚠️ **Limitations**
+
+- **Attachments** are currently not supported due to Directus limitations.
+  See [#22223](https://github.com/directus/directus/discussions/22223) for more details.
+- **Batch sending** is not supported for the same reason; however, the `to` field already accepts an array of recipients
+  by default.
+- **ZeptoMail Template API** is not supported, as Directus handles email templates natively within its system.
+
+---
+
+## 🛠️ Contributing
+
+Contributions are welcome! If you’d like to add new features, fix bugs, or improve the extension, feel free to submit a
+pull request. For major changes, please open an issue first to discuss what you’d like to do.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b my-feature`
+3. Commit your changes: `git commit -am 'Add new feature'`
+4. Push to the branch: `git push origin my-feature`
+5. Open a pull request
+
+## 🐞 Issues
+
+Found a bug or have a feature request? Please [open an issue](https://github.com/nawafinity/directus-zeptomail/issues)
+on GitHub with a clear description and steps to reproduce (if applicable). Your feedback helps improve the extension!
+
+--- 
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
