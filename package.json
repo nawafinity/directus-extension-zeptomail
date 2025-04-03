@@ -10,6 +10,7 @@
 		"zeptomail",
 		"email"
 	],
+	"license": "MIT",
 	"author": {
 		"email": "nawafinity@gmail.com",
 		"name": "Nawaf Khalifah",
