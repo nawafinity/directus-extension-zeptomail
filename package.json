@@ -1,5 +1,5 @@
 {
-	"name": "directus-zeptomail",
+	"name": "directus-extrnsion-zeptomail",
 	"description": "A Directus extension that integrates ZeptoMail HTTP API to send transactional emails.",
 	"icon": "extension",
 	"version": "1.0.0",
@@ -17,7 +17,7 @@
 		"url": "https://github.com/nawafinity"
 	},
 	"repository": {
-		"url": "https://github.com/nawafinity/directus-zeptomail",
+		"url": "https://github.com/nawafinity/directus-extrnsion-zeptomail",
 		"type": "git"
 	},
 	"readme": "README.md",
@@ -26,7 +26,7 @@
 		"dist",
 		"package.json",
 		"README.md",
-		"README.AR_SA.md",
+		"README.ar_SA.md",
 		"LICENSE"
 	],
 	"directus:extension": {

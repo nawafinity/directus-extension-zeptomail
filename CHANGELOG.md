@@ -33,4 +33,4 @@ All notable changes to this project will be documented in this file.
 ---
 
 > This project follows [Semantic Versioning](https://semver.org/).  
-> Want to contribute? Check out our [GitHub Issues](https://github.com/nawafinity/directus-zeptomail/issues).
+> Want to contribute? Check out our [GitHub Issues](https://github.com/nawafinity/directus-extrnsion-zeptomail/issues).

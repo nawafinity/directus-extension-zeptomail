@@ -1,4 +1,4 @@
-<p align="center"><img alt="Directus Logo" src="https://raw.githubusercontent.com/nawafinity/directus-zeptomail/main/assets/cover.png"></p>
+<p align="center"><img alt="Directus Logo" src="https://raw.githubusercontent.com/nawafinity/directus-extension-zeptomail/main/assets/cover.png"></p>
 
 ---
 
@@ -9,7 +9,7 @@ transactional emails.
 
 <div align="center">
 
-[العربية](README.AR_SA.md)
+[العربية](README.ar_SA.md)
 
 </div>
 
@@ -68,19 +68,19 @@ You can install the extension in one of two ways:
 #### Using NPM
 
 ```shell
-npm install directus-zeptomail
+npm install directus-extension-zeptomail
 ```
 
 #### Using PNPM
 
 ```shell
-pnpm add directus-zeptomail
+pnpm add directus-extension-zeptomail
 ```
 
 #### Using YARN
 
 ```shell
-yarn add directus-zeptomail
+yarn add directus-extension-zeptomail
 ```
 
 > 📘 Also take a look at the [Directus Guide](https://directus.io/docs/self-hosting/including-extensions) for more
@@ -128,7 +128,7 @@ pull request. For major changes, please open an issue first to discuss what you�
 
 ## 🐞 Issues
 
-Found a bug or have a feature request? Please [open an issue](https://github.com/nawafinity/directus-zeptomail/issues)
+Found a bug or have a feature request? Please [open an issue](https://github.com/nawafinity/directus-extension-zeptomail/issues)
 on GitHub with a clear description and steps to reproduce (if applicable). Your feedback helps improve the extension!
 
 ## 📄 License
@@ -142,6 +142,6 @@ If you want to support our projects and help us group it, you can [become a spon
 
 ---
 
-<img height="56.5" src="https://raw.githubusercontent.com/nawafinity/directus-zeptomail/main/assets/saudi-made.png" title="Made with ❤️ in Saudi Arabia" width="169" alt="Saudi made"/>
+<img height="56.5" src="https://raw.githubusercontent.com/nawafinity/directus-extension-zeptomail/main/assets/saudi-made.png" title="Made with ❤️ in Saudi Arabia" width="169" alt="Saudi made"/>
 
 Made with 💚 in [Saudi Arabia](https://en.wikipedia.org/wiki/Saudi_Arabia)
